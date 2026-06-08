@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cafe1"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="16dp">
+
+            <EditText
+                android:id="@+id/info1n"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_nombre"
+                android:textColor="@color/texto1"
+                android:textColorHint="#A5D6A7"
+                android:backgroundTint="@color/cafe2"
+                android:layout_marginBottom="12dp"/>
+
+            <EditText
+                android:id="@+id/info2m"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_marca"
+                android:textColor="@color/texto1"
+                android:textColorHint="#A5D6A7"
+                android:backgroundTint="@color/cafe2"
+                android:layout_marginBottom="12dp"/>
+
+            <EditText
+                android:id="@+id/info3p"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_pais"
+                android:textColor="@color/texto1"
+                android:textColorHint="#A5D6A7"
+                android:backgroundTint="@color/cafe2"
+                android:layout_marginBottom="12dp"/>
+
+            <EditText
+                android:id="@+id/info4t"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_tel"
+                android:textColor="@color/texto1"
+                android:textColorHint="#A5D6A7"
+                android:backgroundTint="@color/cafe2"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_presentacion"
+                android:textColor="@color/cafe2"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/Presentacion"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="12dp"
+                android:backgroundTint="@color/cafe2" />
+
+            <EditText
+                android:id="@+id/info5t"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/label_cacao"
+                android:textColor="@color/texto1"
+                android:textColorHint="#A5D6A7"
+                android:backgroundTint="@color/cafe2"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_tipo_cacao"
+                android:textColor="@color/cafe2"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/Cacao"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="12dp"
+                android:backgroundTint="@color/cafe2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_perfil_sabor"
+                android:textColor="@color/cafe2"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/Sabor"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="12dp"
+                android:backgroundTint="@color/cafe2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_tipo"
+                android:textColor="@color/cafe2"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/Tipo"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="12dp"
+                android:backgroundTint="@color/cafe2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_peso"
+                android:textColor="@color/cafe2"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/Peso"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="24dp"
+                android:backgroundTint="@color/cafe2"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        style="?android:attr/buttonBarStyle">
+
+        <Button
+            android:id="@+id/Anterior"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/moss"
+            android:text="@string/btn_anterior"
+            android:textColor="@color/white"
+            style="?android:attr/buttonBarButtonStyle"/>
+
+        <Button
+            android:id="@+id/Guardar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:backgroundTint="@color/cafe2"
+            android:text="@string/btn_actualizar"
+            android:textColor="@color/white"
+            style="?android:attr/buttonBarButtonStyle"/>
+
+        <Button
+            android:id="@+id/Siguiente"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/moss"
+            android:text="@string/btn_siguiente"
+            android:textColor="@color/white"
+            style="?android:attr/buttonBarButtonStyle"/>
+    </LinearLayout>
+</LinearLayout>

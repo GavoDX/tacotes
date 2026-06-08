@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">Xoco</string>
+    <string name="hint_nombre">Nombre del Producto</string>
+    <string name="hint_marca">Marca Comercial</string>
+    <string name="hint_pais">País de origen</string>
+    <string name="hint_tel">Teléfono de contacto</string>
+    <string name="label_cacao">Porcentaje de Cacao</string>
+    <string name="label_presentacion">Tipo de Presentación</string>
+    <string name="label_tipo_cacao">Variedad de Cacao</string>
+    <string name="label_perfil_sabor">Perfil de Sabor</string>
+    <string name="label_tipo">Categoría</string>
+    <string name="label_peso">Peso Neto</string>
+
+    <string name="menu_nuevo">Nuevo Registro</string>
+    <string name="menu_inventario">Inventario</string>
+    <string name="menu_modificar">Modificar</string>
+    <string name="menu_eliminar">Eliminar</string>
+    <string name="menu_salir">Salir</string>
+    <string name="menu_soporte">Soporte</string>
+    <string name="menu_acerca_de">Acerca de</string>
+
+    <string name="btn_ver_todo">Ver Inventario</string>
+    <string name="btn_guardar">Guardar Datos</string>
+    <string name="btn_eliminar">Eliminar Registro</string>
+    <string name="btn_actualizar">Actualizar</string>
+    <string name="btn_anterior">Anterior</string>
+    <string name="btn_siguiente">Siguiente</string>
+    <string name="btn_iniciar">Iniciar Sesión</string>
+    <string name="btn_volver">Volver</string>
+
+    <string name="label_usuario">Usuario</string>
+    <string name="label_contrasena">Contraseña</string>
+
+    <string-array name="presentacion">
+        <item>Barra</item>
+        <item>Trufa</item>
+        <item>Bombón</item>
+        <item>Polvo</item>
+    </string-array>
+
+    <string-array name="tipocacao">
+        <item>Criollo</item>
+        <item>Forastero</item>
+        <item>Trinitario</item>
+    </string-array>
+
+    <string-array name="perfildesabor">
+        <item>Amargo</item>
+        <item>Dulce</item>
+        <item>Afrutado</item>
+        <item>Especiado</item>
+    </string-array>
+
+    <string-array name="tipo">
+        <item>Amargo</item>
+        <item>Con Leche</item>
+        <item>Blanco</item>
+        <item>Artesanal</item>
+        <item>Semiamargo</item>
+        <item>Gourmet</item>
+        <item>Ruby</item>
+    </string-array>
+
+    <string-array name="peso">
+        <item>100 gr</item>
+        <item>90 gr</item>
+        <item>250 gr</item>
+    </string-array>
+</resources>

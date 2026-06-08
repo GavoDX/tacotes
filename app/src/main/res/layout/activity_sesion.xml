@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/cafe1"
+    android:gravity="center"
+    android:padding="32dp">
+
+    <ImageView
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:src="@drawable/logo2"
+        android:layout_marginBottom="48dp"
+        android:contentDescription="Logo de la aplicación" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_usuario"
+        android:textColor="@color/texto1"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
+
+    <EditText
+        android:id="@+id/Usuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:textColor="@color/texto1"
+        android:textColorHint="#A5D6A7"
+        android:backgroundTint="@color/cafe2"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_contrasena"
+        android:textColor="@color/texto1"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
+
+    <EditText
+        android:id="@+id/Contra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:textColor="@color/texto1"
+        android:textColorHint="#A5D6A7"
+        android:backgroundTint="@color/cafe2"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:id="@+id/Iniciar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:backgroundTint="@color/cafe2"
+        android:text="@string/btn_iniciar"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        />
+
+</LinearLayout>

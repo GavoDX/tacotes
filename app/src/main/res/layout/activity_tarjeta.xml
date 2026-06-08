@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cafe1"
+    android:padding="8dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="12dp"
+        app:cardBackgroundColor="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/logo2"
+                android:clipToOutline="true"
+                android:contentDescription="Imagen del producto" />
+
+            <TextView
+                android:id="@+id/Nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/texto1"
+                android:paddingTop="12dp"/>
+
+            <TextView
+                android:id="@+id/Marca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Marca"
+                android:textSize="16sp"
+                android:textColor="@color/cafe2" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C8E6C9"
+                android:layout_marginVertical="8dp"/>
+
+            <TextView
+                android:id="@+id/Pais"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="País"
+                android:textSize="14sp"
+                android:textColor="@color/texto1"/>
+
+            <TextView
+                android:id="@+id/Presentacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Presentación"
+                android:textSize="14sp"
+                android:textColor="@color/texto1"
+                android:paddingTop="4dp"/>
+
+            <TextView
+                android:id="@+id/PCACAO"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="% Cacao"
+                android:textSize="14sp"
+                android:textColor="@color/texto1"
+                android:paddingTop="4dp"/>
+
+            <TextView
+                android:id="@+id/Cacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cacao"
+                android:textSize="14sp"
+                android:textColor="@color/texto1"
+                android:paddingTop="4dp"/>
+
+            <TextView
+                android:id="@+id/Sabor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sabor"
+                android:textSize="14sp"
+                android:textColor="@color/texto1"
+                android:paddingTop="4dp"/>
+
+            <TextView
+                android:id="@+id/Tipo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipo"
+                android:textSize="14sp"
+                android:textColor="@color/texto1"
+                android:paddingTop="4dp"/>
+
+            <TextView
+                android:id="@+id/Peso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Peso"
+                android:textSize="14sp"
+                android:textColor="@color/texto1"
+                android:paddingTop="4dp"/>
+
+            <TextView
+                android:id="@+id/Tel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Teléfono"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/texto1"
+                android:paddingTop="12dp"/>
+
+            <Button
+                android:id="@+id/tTel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Contactar"
+                android:drawableLeft="@android:drawable/ic_menu_call"
+                android:backgroundTint="@color/cafe2"
+                android:textColor="@color/white"
+                android:layout_marginTop="12dp"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/volver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_volver"
+        android:backgroundTint="@color/accent"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>

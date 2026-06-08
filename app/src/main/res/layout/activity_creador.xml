@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cafe1"
+    android:orientation="vertical"
+    tools:context=".Creador">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            app:cardCornerRadius="140dp"
+            app:cardElevation="8dp"
+            android:layout_marginBottom="32dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/yo"
+                android:contentDescription="Foto del Creador" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Desarrollado por:"
+            android:textColor="@color/texto1"
+            android:textSize="14sp"
+            android:alpha="0.7"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pablo Lomelí Rodríguez"
+            android:textColor="@color/cafe2"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
