@@ -1,17 +1,18 @@
-﻿<?php
+<?php
 header('Content-Type: application/json');
 
- = getenv('DATABASE_URL');
+$endpoints = [
+    'login' => 'POST /login.php - Iniciar sesión',
+    'registro' => 'POST /registro.php - Registrarse',
+    'productos' => 'GET /productos.php - Obtener todos los tacos',
+    'compras' => 'GET /compras.php?usuario_id=1 - Obtener compras del usuario',
+    'agregar_compra' => 'POST /agregar_compra.php - Agregar taco al carrito',
+    'eliminar_compra' => 'POST /eliminar_compra.php - Eliminar taco del carrito'
+];
 
-if (!) {
-    echo json_encode(['error' => 'DATABASE_URL no configurada']);
-    exit;
-}
-
-try {
-     = new PDO();
-    echo json_encode(['status' => 'ok', 'message' => 'Conectado a la BD']);
-} catch (Exception ) {
-    echo json_encode(['error' => ->getMessage()]);
-}
+echo json_encode([
+    'success' => true,
+    'message' => 'API de Tacos',
+    'endpoints' => $endpoints
+]);
 ?>
