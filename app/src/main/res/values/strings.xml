@@ -1,15 +1,16 @@
 <resources>
     <string name="app_name">Xoco</string>
-    <string name="hint_nombre">Nombre del Producto</string>
-    <string name="hint_marca">Marca Comercial</string>
+    <string name="hint_nombre">Nombre del Taco</string>
+    <string name="hint_marca">Taquería</string>
     <string name="hint_pais">País de origen</string>
     <string name="hint_tel">Teléfono de contacto</string>
-    <string name="label_cacao">Porcentaje de Cacao</string>
-    <string name="label_presentacion">Tipo de Presentación</string>
-    <string name="label_tipo_cacao">Variedad de Cacao</string>
+
+    <string name="label_cacao">Nivel de Picante</string>
+    <string name="label_presentacion">Tipo de Tortilla</string>
+    <string name="label_tipo_cacao">Variedad de Carne</string>
     <string name="label_perfil_sabor">Perfil de Sabor</string>
     <string name="label_tipo">Categoría</string>
-    <string name="label_peso">Peso Neto</string>
+    <string name="label_peso">Porción</string>
 
     <string name="menu_nuevo">Nuevo Registro</string>
     <string name="menu_inventario">Inventario</string>
@@ -32,38 +33,42 @@
     <string name="label_contrasena">Contraseña</string>
 
     <string-array name="presentacion">
-        <item>Barra</item>
-        <item>Trufa</item>
-        <item>Bombón</item>
-        <item>Polvo</item>
+        <item>Maíz</item>
+        <item>Harina</item>
+        <item>Azul</item>
+        <item>Integral</item>
     </string-array>
 
     <string-array name="tipocacao">
-        <item>Criollo</item>
-        <item>Forastero</item>
-        <item>Trinitario</item>
+        <item>Pastor</item>
+        <item>Asada</item>
+        <item>Carnitas</item>
+        <item>Barbacoa</item>
+        <item>Birria</item>
+        <item>Suadero</item>
     </string-array>
 
     <string-array name="perfildesabor">
-        <item>Amargo</item>
-        <item>Dulce</item>
-        <item>Afrutado</item>
+        <item>Picante</item>
+        <item>Ahumado</item>
+        <item>Salado</item>
+        <item>Jugoso</item>
         <item>Especiado</item>
     </string-array>
 
     <string-array name="tipo">
-        <item>Amargo</item>
-        <item>Con Leche</item>
-        <item>Blanco</item>
-        <item>Artesanal</item>
-        <item>Semiamargo</item>
-        <item>Gourmet</item>
-        <item>Ruby</item>
+        <item>Taco Tradicional</item>
+        <item>Taco Gourmet</item>
+        <item>Taco Vegano</item>
+        <item>Taco de Mariscos</item>
+        <item>Taco Regional</item>
     </string-array>
 
     <string-array name="peso">
-        <item>100 gr</item>
-        <item>90 gr</item>
-        <item>250 gr</item>
+        <item>1 Taco</item>
+        <item>3 Tacos</item>
+        <item>5 Tacos</item>
+        <item>Orden Completa</item>
     </string-array>
+
 </resources>

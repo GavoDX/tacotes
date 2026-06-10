@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/logo2"
+                android:src="@drawable/logo3"
                 android:clipToOutline="true"
                 android:contentDescription="Imagen del producto" />
 

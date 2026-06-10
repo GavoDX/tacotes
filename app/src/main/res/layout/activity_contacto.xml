@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Soporte Técnico"
+            android:text="Contacto"
             android:textColor="@color/texto1"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -45,11 +45,18 @@
             android:textColor="@color/cafe2"
             android:textSize="18sp"
             android:layout_marginBottom="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="a23300762@ceti.mx"
+            android:textColor="@color/cafe2"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ID de Usuario"
+            android:text="Registros"
             android:textColor="@color/texto1"
             android:textSize="14sp"
             android:alpha="0.7"/>
@@ -58,6 +65,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="23300764"
+            android:textColor="@color/texto1"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="23300762"
             android:textColor="@color/texto1"
             android:textSize="18sp"
             android:textStyle="bold" />
