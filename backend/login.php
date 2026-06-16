@@ -1,53 +1,59 @@
 <?php
 require_once 'config.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $data = json_decode(file_get_contents("php://input"), true);
-    
-    $usuario = $data['usuario'] ?? null;
-    $clave = $data['clave'] ?? null;
-
-    if (!$usuario || !$clave) {
-        http_response_code(400);
-        echo json_encode([
-            'success' => false,
-            'message' => 'Usuario y contraseña requeridos'
-        ]);
-        exit();
-    }
-
-    try {
-        $stmt = $pdo->prepare("SELECT id, usuario, clave FROM usuarios WHERE usuario = ?");
-        $stmt->execute([$usuario]);
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($resultado && password_verify($clave, $resultado['clave'])) {
-            http_response_code(200);
-            echo json_encode([
-                'success' => true,
-                'message' => 'Login exitoso',
-                'usuario_id' => $resultado['id'],
-                'usuario' => $resultado['usuario']
-            ]);
-        } else {
-            http_response_code(401);
-            echo json_encode([
-                'success' => false,
-                'message' => 'Usuario o contraseña incorrectos'
-            ]);
-        }
-    } catch (Exception $e) {
-        http_response_code(500);
-        echo json_encode([
-            'success' => false,
-            'message' => 'Error en el servidor: ' . $e->getMessage()
-        ]);
-    }
-} else {
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
-    echo json_encode([
-        'success' => false,
-        'message' => 'Método POST requerido'
-    ]);
+    echo respuesta(false, 'Método no permitido');
+    exit();
 }
+
+$datos = json_decode(file_get_contents('php://input'), true);
+
+if (!isset($datos['email'], $datos['password'])) {
+    http_response_code(400);
+    echo respuesta(false, 'Email y contraseña requeridos');
+    exit();
+}
+
+$email = trim($datos['email']);
+$password = $datos['password'];
+
+$sql = "SELECT id, nombre, email, password, activo FROM usuarios WHERE email = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$resultado = $stmt->get_result();
+
+if ($resultado->num_rows === 0) {
+    http_response_code(401);
+    echo respuesta(false, 'Credenciales inválidas');
+    exit();
+}
+
+$usuario = $resultado->fetch_assoc();
+
+if (!$usuario['activo']) {
+    http_response_code(403);
+    echo respuesta(false, 'Usuario desactivado');
+    exit();
+}
+
+if (!password_verify($password, $usuario['password'])) {
+    http_response_code(401);
+    echo respuesta(false, 'Credenciales inválidas');
+    exit();
+}
+
+$token = bin2hex(random_bytes(32));
+
+http_response_code(200);
+echo respuesta(true, 'Login exitoso', [
+    'id' => $usuario['id'],
+    'nombre' => $usuario['nombre'],
+    'email' => $usuario['email'],
+    'token' => $token
+]);
+
+$stmt->close();
+$conn->close();
 ?>
