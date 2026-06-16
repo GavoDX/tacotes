@@ -1,9 +1,10 @@
 <?php
-// Configuración de base de datos
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'tacotes_db');
+// Configuración de base de datos PostgreSQL (Railway)
+define('DB_HOST', 'zephyr.proxy.rlwy.net');
+define('DB_PORT', '11187');
+define('DB_USER', 'postgres');
+define('DB_PASS', 'YrnzMWmJCxevNmdiwiBlNVMFWxqWMZLd');
+define('DB_NAME', 'railway');
 
 // Configuración de API
 define('API_URL', 'http://localhost/tacotes/backend');
@@ -21,15 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-// Conexión a BD
+// Conexión a BD PostgreSQL
 try {
-    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-    
-    if ($conn->connect_error) {
-        throw new Exception('Error de conexión: ' . $conn->connect_error);
-    }
-    
-    $conn->set_charset("utf8");
+    $dsn = "pgsql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME;
+    $conn = new PDO($dsn, DB_USER, DB_PASS);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->exec("SET NAMES utf8");
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode(['error' => 'Error de conexión a BD: ' . $e->getMessage()]);
