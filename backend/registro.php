@@ -1,75 +1,52 @@
 <?php
-require_once 'config.php';
+require 'config.php';
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo respuesta(false, 'Método no permitido');
-    exit();
-}
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $data = json_decode(file_get_contents("php://input"), true);
+    
+    $usuario = $data['usuario'] ?? null;
+    $celular = $data['celular'] ?? null;
+    $clave = $data['clave'] ?? null;
+    $confirmar = $data['confirmar'] ?? null;
 
-$datos = json_decode(file_get_contents('php://input'), true);
+    if (!$usuario || !$celular || !$clave || !$confirmar) {
+        echo respuesta(false, 'Todos los campos son requeridos');
+        exit();
+    }
 
-if (!isset($datos['nombre'], $datos['email'], $datos['password'])) {
-    http_response_code(400);
-    echo respuesta(false, 'Faltan campos requeridos: nombre, email, password');
-    exit();
-}
+    if (strlen($usuario) < 3) {
+        echo respuesta(false, 'El usuario debe tener al menos 3 caracteres');
+        exit();
+    }
 
-$nombre = trim($datos['nombre']);
-$email = trim($datos['email']);
-$password = $datos['password'];
-$telefono = isset($datos['telefono']) ? trim($datos['telefono']) : '';
-$direccion = isset($datos['direccion']) ? trim($datos['direccion']) : '';
+    if (strlen($clave) < 6) {
+        echo respuesta(false, 'La contraseña debe tener al menos 6 caracteres');
+        exit();
+    }
 
-if (strlen($nombre) < 3) {
-    http_response_code(400);
-    echo respuesta(false, 'El nombre debe tener al menos 3 caracteres');
-    exit();
-}
+    if ($clave !== $confirmar) {
+        echo respuesta(false, 'Las contraseñas no coinciden');
+        exit();
+    }
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    http_response_code(400);
-    echo respuesta(false, 'Email inválido');
-    exit();
-}
+    $stmt = $conn->prepare("SELECT id FROM usuarios WHERE usuario = ? OR celular = ?");
+    $stmt->execute([$usuario, $celular]);
+    
+    if ($stmt->fetch()) {
+        echo respuesta(false, 'El usuario o celular ya está registrado');
+        exit();
+    }
 
-if (strlen($password) < 6) {
-    http_response_code(400);
-    echo respuesta(false, 'La contraseña debe tener al menos 6 caracteres');
-    exit();
-}
-
-$sql = "SELECT id FROM usuarios WHERE email = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$resultado = $stmt->get_result();
-
-if ($resultado->num_rows > 0) {
-    http_response_code(409);
-    echo respuesta(false, 'El email ya está registrado');
-    exit();
-}
-
-$password_hash = password_hash($password, PASSWORD_BCRYPT);
-
-$sql = "INSERT INTO usuarios (nombre, email, password, telefono, direccion) VALUES (?, ?, ?, ?, ?)";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("sssss", $nombre, $email, $password_hash, $telefono, $direccion);
-
-if ($stmt->execute()) {
-    $usuario_id = $conn->insert_id;
-    http_response_code(201);
-    echo respuesta(true, 'Usuario registrado exitosamente', [
-        'id' => $usuario_id,
-        'nombre' => $nombre,
-        'email' => $email
-    ]);
+    $clave_hash = password_hash($clave, PASSWORD_BCRYPT);
+    
+    $stmt = $conn->prepare("INSERT INTO usuarios (usuario, celular, clave) VALUES (?, ?, ?)");
+    
+    if ($stmt->execute([$usuario, $celular, $clave_hash])) {
+        echo respuesta(true, 'Registro exitoso');
+    } else {
+        echo respuesta(false, 'Error al registrar');
+    }
 } else {
-    http_response_code(500);
-    echo respuesta(false, 'Error al registrar usuario: ' . $conn->error);
+    echo respuesta(false, 'Método POST requerido');
 }
-
-$stmt->close();
-$conn->close();
 ?>
