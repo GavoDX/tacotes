@@ -11,9 +11,8 @@ if ($enRailway) {
     define('DB_PORT', '5432');
 } else {
     // En local (XAMPP / pruebas desde tu PC): usa el host PÚBLICO
-    // Saca estos valores de DATABASE_PUBLIC_URL en Railway (pestaña Variables)
-    define('DB_HOST', 'monorail.proxy.rlwy.net'); // <-- CAMBIA por tu host público real
-    define('DB_PORT', '43210');                    // <-- CAMBIA por tu puerto público real
+    define('DB_HOST', 'zephyr.proxy.rlwy.net');
+    define('DB_PORT', '11187');
 }
 
 define('DB_USER', 'postgres');
