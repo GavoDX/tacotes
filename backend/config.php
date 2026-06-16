@@ -1,7 +1,7 @@
 <?php
-// Configuración de base de datos PostgreSQL (Railway)
-define('DB_HOST', 'zephyr.proxy.rlwy.net');
-define('DB_PORT', '11187');
+// Configuración de base de datos PostgreSQL (Railway - INTERNA)
+define('DB_HOST', 'postgres.railway.internal');
+define('DB_PORT', '5432');
 define('DB_USER', 'postgres');
 define('DB_PASS', 'YrnzMWmJCxevNmdiwiBlNVMFWxqWMZLd');
 define('DB_NAME', 'railway');
