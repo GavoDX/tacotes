@@ -7,7 +7,7 @@ define('DB_PASS', 'YrnzMWmJCxevNmdiwiBlNVMFWxqWMZLd');
 define('DB_NAME', 'railway');
 
 // Configuración de API
-define('API_URL', 'http://localhost/tacotes/backend');
+define('API_URL', 'https://tu-proyecto.up.railway.app/backend');
 define('SECRET_KEY', 'tu_clave_secreta_super_segura_2024');
 
 // Headers CORS
