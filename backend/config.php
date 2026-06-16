@@ -1,7 +1,21 @@
 <?php
-// Configuración de base de datos PostgreSQL (Railway - INTERNA)
-define('DB_HOST', 'postgres.railway.internal');
-define('DB_PORT', '5432');
+// ========================================
+// Configuración de base de datos PostgreSQL (Railway)
+// ========================================
+// Detecta automáticamente si corre DENTRO de Railway o en LOCAL (XAMPP)
+$enRailway = getenv('RAILWAY_ENVIRONMENT') !== false;
+
+if ($enRailway) {
+    // Dentro de Railway: usa la red INTERNA
+    define('DB_HOST', 'postgres.railway.internal');
+    define('DB_PORT', '5432');
+} else {
+    // En local (XAMPP / pruebas desde tu PC): usa el host PÚBLICO
+    // Saca estos valores de DATABASE_PUBLIC_URL en Railway (pestaña Variables)
+    define('DB_HOST', 'monorail.proxy.rlwy.net'); // <-- CAMBIA por tu host público real
+    define('DB_PORT', '43210');                    // <-- CAMBIA por tu puerto público real
+}
+
 define('DB_USER', 'postgres');
 define('DB_PASS', 'YrnzMWmJCxevNmdiwiBlNVMFWxqWMZLd');
 define('DB_NAME', 'railway');
@@ -47,9 +61,9 @@ function obtener_usuario_id() {
     if (!isset($_SERVER['HTTP_AUTHORIZATION'])) {
         return null;
     }
-    
+
     $token = str_replace('Bearer ', '', $_SERVER['HTTP_AUTHORIZATION']);
-    
+
     // Aquí deberías validar el token JWT
     // Por ahora retornamos el ID del header (simplificado)
     return isset($_GET['usuario_id']) ? intval($_GET['usuario_id']) : null;
