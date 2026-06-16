@@ -1,26 +1,18 @@
 <?php
 // ========================================
-// Configuración de base de datos PostgreSQL (Railway)
+// Configuración PostgreSQL (Railway)
 // ========================================
-// Detecta automáticamente si corre DENTRO de Railway o en LOCAL (XAMPP)
-$enRailway = getenv('RAILWAY_ENVIRONMENT') !== false;
+// Lee las credenciales de las variables de entorno que Railway inyecta.
+// Si no existen (pruebas locales), usa los valores de respaldo de la derecha.
 
-if ($enRailway) {
-    // Dentro de Railway: usa la red INTERNA
-    define('DB_HOST', 'postgres.railway.internal');
-    define('DB_PORT', '5432');
-} else {
-    // En local (XAMPP / pruebas desde tu PC): usa el host PÚBLICO
-    define('DB_HOST', 'zephyr.proxy.rlwy.net');
-    define('DB_PORT', '11187');
-}
-
-define('DB_USER', 'postgres');
-define('DB_PASS', 'YrnzMWmJCxevNmdiwiBlNVMFWxqWMZLd');
-define('DB_NAME', 'railway');
+define('DB_HOST', getenv('PGHOST') ?: 'zephyr.proxy.rlwy.net');
+define('DB_PORT', getenv('PGPORT') ?: '11187');
+define('DB_USER', getenv('PGUSER') ?: 'postgres');
+define('DB_PASS', getenv('PGPASSWORD') ?: 'YrnzMWmJCxevNmdiwiBlNVMFWxqWMZLd');
+define('DB_NAME', getenv('PGDATABASE') ?: 'railway');
 
 // Configuración de API
-define('API_URL', 'https://tu-proyecto.up.railway.app/backend');
+define('API_URL', 'https://tacotes-api-7p7x-production.up.railway.app');
 define('SECRET_KEY', 'tu_clave_secreta_super_segura_2024');
 
 // Headers CORS
