@@ -3,7 +3,7 @@ require 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
-    
+
     $usuario = $data['usuario'] ?? null;
     $celular = $data['celular'] ?? null;
     $clave = $data['clave'] ?? null;
@@ -31,16 +31,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt = $conn->prepare("SELECT id FROM usuarios WHERE usuario = ? OR celular = ?");
     $stmt->execute([$usuario, $celular]);
-    
+
     if ($stmt->fetch()) {
         echo respuesta(false, 'El usuario o celular ya está registrado');
         exit();
     }
 
     $clave_hash = password_hash($clave, PASSWORD_BCRYPT);
-    
+
     $stmt = $conn->prepare("INSERT INTO usuarios (usuario, celular, clave) VALUES (?, ?, ?)");
-    
+
     if ($stmt->execute([$usuario, $celular, $clave_hash])) {
         echo respuesta(true, 'Registro exitoso');
     } else {
