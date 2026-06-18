@@ -3,32 +3,40 @@ require 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
-    
-    $usuario_id = $data['usuario_id'] ?? null;
-    $producto_id = $data['producto_id'] ?? null;
-    $cantidad = $data['cantidad'] ?? 1;
 
-    if (!$usuario_id || !$producto_id) {
-        echo respuesta(false, 'usuario_id y producto_id requeridos');
+    $usuario_id = $data['usuario_id'] ?? null;
+    $nombre = $data['nombre'] ?? null;
+
+    if (!$usuario_id || !$nombre) {
+        echo respuesta(false, 'usuario_id y nombre son requeridos');
         exit();
     }
 
-    $stmt = $conn->prepare("SELECT id, cantidad FROM compras WHERE usuario_id = ? AND producto_id = ?");
-    $stmt->execute([$usuario_id, $producto_id]);
-    $compra_existente = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = $conn->prepare("
+        INSERT INTO productos
+        (usuario_id, nombre, taqueria, pais_origen, telefono, nivel_picante,
+         tipo_tortilla, variedad_carne, perfil_sabor, categoria, porcion)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?)
+    ");
 
-    if ($compra_existente) {
-        $nueva_cantidad = $compra_existente['cantidad'] + $cantidad;
-        $stmt = $conn->prepare("UPDATE compras SET cantidad = ? WHERE id = ?");
-        $stmt->execute([$nueva_cantidad, $compra_existente['id']]);
-        echo respuesta(true, 'Producto actualizado');
+    $ok = $stmt->execute([
+        $usuario_id,
+        $nombre,
+        $data['taqueria'] ?? null,
+        $data['pais_origen'] ?? null,
+        $data['telefono'] ?? null,
+        $data['nivel_picante'] ?? null,
+        $data['tipo_tortilla'] ?? null,
+        $data['variedad_carne'] ?? null,
+        $data['perfil_sabor'] ?? null,
+        $data['categoria'] ?? null,
+        $data['porcion'] ?? null
+    ]);
+
+    if ($ok) {
+        echo respuesta(true, 'Taco guardado');
     } else {
-        $stmt = $conn->prepare("INSERT INTO compras (usuario_id, producto_id, cantidad) VALUES (?, ?, ?)");
-        if ($stmt->execute([$usuario_id, $producto_id, $cantidad])) {
-            echo respuesta(true, 'Producto agregado');
-        } else {
-            echo respuesta(false, 'Error al agregar');
-        }
+        echo respuesta(false, 'Error al guardar');
     }
 } else {
     echo respuesta(false, 'Método POST requerido');
