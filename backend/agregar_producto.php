@@ -12,31 +12,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    $stmt = $conn->prepare("
-        INSERT INTO productos
-        (usuario_id, nombre, taqueria, pais_origen, telefono, nivel_picante,
-         tipo_tortilla, variedad_carne, perfil_sabor, categoria, porcion)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?)
-    ");
+    try {
+        $stmt = $conn->prepare("
+            INSERT INTO productos
+            (usuario_id, nombre, taqueria, pais_origen, telefono, nivel_picante,
+             tipo_tortilla, variedad_carne, perfil_sabor, categoria, porcion)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?)
+        ");
 
-    $ok = $stmt->execute([
-        $usuario_id,
-        $nombre,
-        $data['taqueria'] ?? null,
-        $data['pais_origen'] ?? null,
-        $data['telefono'] ?? null,
-        $data['nivel_picante'] ?? null,
-        $data['tipo_tortilla'] ?? null,
-        $data['variedad_carne'] ?? null,
-        $data['perfil_sabor'] ?? null,
-        $data['categoria'] ?? null,
-        $data['porcion'] ?? null
-    ]);
+        $ok = $stmt->execute([
+            $usuario_id,
+            $nombre,
+            $data['taqueria'] ?? null,
+            $data['pais_origen'] ?? null,
+            $data['telefono'] ?? null,
+            $data['nivel_picante'] ?? null,
+            $data['tipo_tortilla'] ?? null,
+            $data['variedad_carne'] ?? null,
+            $data['perfil_sabor'] ?? null,
+            $data['categoria'] ?? null,
+            $data['porcion'] ?? null
+        ]);
 
-    if ($ok) {
-        echo respuesta(true, 'Taco guardado');
-    } else {
-        echo respuesta(false, 'Error al guardar');
+        if ($ok) {
+            echo respuesta(true, 'Taco guardado');
+        } else {
+            echo respuesta(false, 'No se pudo guardar');
+        }
+    } catch (Exception $e) {
+        echo respuesta(false, 'Error BD: ' . $e->getMessage());
     }
 } else {
     echo respuesta(false, 'Método POST requerido');
